@@ -981,129 +981,37 @@
       pwInput.focus();
       return;
     }
-    /* Senha correta — carrega innerHTML de <main> no editor */
-    var mainEl = document.querySelector('main');
-    editor.value = mainEl ? mainEl.innerHTML : '';
-    pwPanel.style.display = 'none';
-    editPanel.style.display = 'flex';
-    status.textContent = '';
-  };
-
-  /* Enter no campo de senha */
-  pwInput.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') document.getElementById('gdd-login-btn').click();
-  });
-
-  /* Salvar — POST para serverless */
-  document.getElementById('gdd-save-btn').onclick = function () {
-    status.textContent = '⏳ Enviando…';
-    document.getElementById('gdd-save-btn').disabled = true;
-
-    fetch(ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-GDD-PASSWORD': CLIENT_PW   /* senha reenviada para o servidor validar via env var */
-      },
-      body: JSON.stringify({
-        path: 'index.html',
-        main_html: editor.value,
-        message: 'GDD edit via admin UI'
-      })
-    })
-    .then(function (r) { return r.json(); })
-    .then(function (d) {
-      if (d.success) {
-        status.textContent = '✅ Salvo com sucesso! Recarregando…';
-        setTimeout(function () { location.reload(true); }, 1000);
-      } else {
-        status.textContent = '❌ Erro: ' + (d.error || 'Resposta inesperada do servidor');
-        document.getElementById('gdd-save-btn').disabled = false;
-      }
-    })
-    .catch(function (err) {
-      status.textContent = '❌ Falha na requisição: ' + err.message;
-      document.getElementById('gdd-save-btn').disabled = false;
-    });
-  };
-})();
-</script>
-<!-- ═══════════════════════════════════════════════════════════════
-     FIM ADMIN PANEL
-═══════════════════════════════════════════════════════════════ -->
-
-<!-- ─── SIDEBAR ─── -->
-<nav>
-  <div class="nav-logo">
-    <div class="game-title">Midnight<br>Trials</div>
-    <div class="doc-label">Game Design Document · Alpha</div>
-  </div>
-
-  <div class="nav-section-group">
-    <a href="#s1">1. Visão Geral</a>
-    <a href="#s2">2. Lore</a>
-    <a href="#s3">3. Loop de Jogo</a>
-  </div>
-  <div class="nav-section-group">
-    <a href="#s4">4. Criaturas</a>
-    <a href="#hookbound">↳ The Hookbound</a>
-    <a href="#whisperer">↳ The Whisperer</a>
-  </div>
-  <div class="nav-section-group">
-    <a href="#s5">5. Classes</a>
-    <a href="#s6">6. Loja de Itens</a>
-  </div>
-  <div class="nav-section-group">
-    <a href="#s7">7. Lobby — O Hotel</a>
-    <a href="#s8">8. Mapas</a>
-  </div>
-  <div class="nav-section-group">
-    <a href="#s9">9. Áudio & SFX</a>
-    <a href="#s10">10. Animações</a>
-    <a href="#s11">11. Sistema de Câmera</a>
-    <a href="#s12">12. Interface & HUD</a>
-  </div>
-  <div class="nav-section-group">
-    <a href="#s13">13. Progressão</a>
-    <a href="#s14">14. Roadmap</a>
-    <a href="#s15">15. Questões Abertas</a>
-  </div>
-
-  <div class="nav-version">v1.0 Alpha &nbsp;·&nbsp; PT-BR</div>
-</nav>
-
-<!-- ─── MAIN ─── -->
-<main>
+    /* Senha correta — carrega innerHTML de <main>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-drip"></div>
-  <div class="hero-eyemark"></div>
-  <div class="hero-content">
-    <div class="hero-pre">Game Design Document</div>
-    <div class="hero-title">
+<div class="hero" bis_skin_checked="1">
+  <div class="hero-bg" bis_skin_checked="1"></div>
+  <div class="hero-drip" bis_skin_checked="1"></div>
+  <div class="hero-eyemark" bis_skin_checked="1"></div>
+  <div class="hero-content" bis_skin_checked="1">
+    <div class="hero-pre" bis_skin_checked="1">Game Design Document</div>
+    <div class="hero-title" bis_skin_checked="1">
       Midnight<br>Trials
       <span>Horror · Survival · Roblox</span>
     </div>
-    <div class="hero-divider"></div>
-    <div class="hero-tagline">Sobreviva à noite. Mas a noite nunca termina.</div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Versão</div>
-        <div class="hero-meta-value">Alpha 1.0</div>
+    <div class="hero-divider" bis_skin_checked="1"></div>
+    <div class="hero-tagline" bis_skin_checked="1">Sobreviva à manha. Mas a noite nunca termina.</div>
+    <div class="hero-meta" bis_skin_checked="1">
+      <div class="hero-meta-item" bis_skin_checked="1">
+        <div class="hero-meta-label" bis_skin_checked="1">Versão</div>
+        <div class="hero-meta-value" bis_skin_checked="1">Alpha 1.0</div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Plataforma</div>
-        <div class="hero-meta-value">Roblox</div>
+      <div class="hero-meta-item" bis_skin_checked="1">
+        <div class="hero-meta-label" bis_skin_checked="1">Plataforma</div>
+        <div class="hero-meta-value" bis_skin_checked="1">Roblox</div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Jogadores</div>
-        <div class="hero-meta-value">10 + 1 Criatura</div>
+      <div class="hero-meta-item" bis_skin_checked="1">
+        <div class="hero-meta-label" bis_skin_checked="1">Jogadores</div>
+        <div class="hero-meta-value" bis_skin_checked="1">10 + 1 Criatura</div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Duração</div>
-        <div class="hero-meta-value">10 Minutos</div>
+      <div class="hero-meta-item" bis_skin_checked="1">
+        <div class="hero-meta-label" bis_skin_checked="1">Duração</div>
+        <div class="hero-meta-value" bis_skin_checked="1">10 Minutos</div>
       </div>
     </div>
   </div>
@@ -1111,13 +1019,13 @@
 
 <!-- ─── 1. VISÃO GERAL ─── -->
 <section class="section" id="s1">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">01</span>
     <h1 class="section-title">Visão Geral do Projeto</h1>
   </div>
 
   <table class="info-table">
-    <tr><td>Nome do Jogo</td><td>Midnight Trials</td></tr>
+    <tbody><tr><td>Nome do Jogo</td><td>Midnight Trials</td></tr>
     <tr><td>Plataforma</td><td>Roblox</td></tr>
     <tr><td>Gênero</td><td>Horror / Survival Multiplayer</td></tr>
     <tr><td>Perspectiva</td><td>3ª Pessoa (câmera próxima, estilo Dead by Daylight) + 1ª Pessoa (alternável)</td></tr>
@@ -1126,7 +1034,7 @@
     <tr><td>Classificação</td><td>Teen / Horror temático</td></tr>
     <tr><td>Referências</td><td>Dead by Daylight, Texas Chainsaw Massacre, Midnight Horrors (Roblox)</td></tr>
     <tr><td>Fase Atual</td><td>Alpha — 2 Criaturas, 2 Mapas, 5 Classes</td></tr>
-  </table>
+  </tbody></table>
 
   <h2>Conceito Central</h2>
   <p>Midnight Trials é um jogo de sobrevivência com foco intenso em terror e imersão. Cada partida coloca um grupo de sobreviventes contra uma criatura assustadora e imprevisível, num ambiente opressor e semi-realista.</p>
@@ -1144,13 +1052,13 @@
 
 <!-- ─── 2. LORE ─── -->
 <section class="section" id="s2">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">02</span>
     <h1 class="section-title">Lore — A História de Midnight Trials</h1>
   </div>
 
   <h2>O Midnight Host</h2>
-  <div class="lore-quote">
+  <div class="lore-quote" bis_skin_checked="1">
     <p>"Pessoas começaram a desaparecer. Sumiam envoltas por um forte brilho, rápido demais para ser compreendido, como se algo as tivesse arrancado da realidade. E arrancou."</p>
   </div>
   <p>Uma entidade sádica e profundamente maléfica, que se autoproclama <strong>Midnight Host</strong>, é o arquiteto de tudo que acontece em Midnight Trials. Um ser que encontra prazer genuíno em observar o sofrimento, a queda da sanidade e a desgraça de suas vítimas. Ela não age por instinto — age por escolha. Por entretenimento.</p>
@@ -1166,17 +1074,17 @@
   </ul>
 
   <h2>O Loop da Morte</h2>
-  <div class="lore-quote">
+  <div class="lore-quote" bis_skin_checked="1">
     <p>"A morte, contudo, não nos liberta. Sempre que morremos naquele lugar, não é o fim. Após algum tempo, despertamos novamente no Hotel, ilesos, como se nada tivesse acontecido, como se estivéssemos em um loop."</p>
   </div>
   <p>Os prisioneiros descobriram que morrer dentro das dimensões não significa liberação. Eles simplesmente... acordam de volta no Hotel. Ilesos. Sem memória da dor, mas com memória do trauma. O Midnight Host os mantém num ciclo proposital — ela precisa deles vivos para continuar o espetáculo.</p>
 
   <h2>A Esperança</h2>
-  <div class="lore-quote">
+  <div class="lore-quote" bis_skin_checked="1">
     <p>"O que ainda sustenta nossa fé é a possibilidade de que uma dessas portas, em algum momento, leve a uma saída. Essa esperança, mesmo que improvável, é tudo o que nos mantém de pé."</p>
   </div>
   <p>Os sobreviventes não são passivos. Com o passar do tempo, estão se adaptando. As classes, os poderes, os itens — tudo isso é fruto dessa adaptação humana forçada.</p>
-  <div class="lore-quote">
+  <div class="lore-quote" bis_skin_checked="1">
     <p>"Ela pode ser onipresente. Mas nós somos humanos, e não existe nada melhor do que nós quando se trata em se adaptar a situações que muitos diriam ser impossíveis. Ela deixou brechas. E nós as vemos. Vamos sair daqui. Mesmo que demore séculos."</p>
   </div>
 
@@ -1191,7 +1099,7 @@
 
 <!-- ─── 3. LOOP DE JOGO ─── -->
 <section class="section" id="s3">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">03</span>
     <h1 class="section-title">Loop de Jogo</h1>
   </div>
@@ -1253,7 +1161,7 @@
   <p>A Sanidade é um estado coletivo da partida que evolui conforme os sobreviventes são eliminados.</p>
 
   <table class="sanity-table">
-    <tr>
+    <tbody><tr>
       <th>Nível</th><th>Gatilho</th><th>Efeitos</th>
     </tr>
     <tr>
@@ -1271,13 +1179,13 @@
       <td>Apenas 2 sobreviventes restantes</td>
       <td>Direção da criatura impossível de rastrear (sons falsos de múltiplas direções); jumpscares de sombras humanoides; clones falsos da criatura aparecem no mapa (se movem mas não causam dano); estado de pânico permanente.</td>
     </tr>
-  </table>
+  </tbody></table>
   <p class="note">O Sistema de Sanidade penaliza o grupo por perder membros e cria escalada natural de dificuldade e terror sem alterar stats da criatura. Os últimos sobreviventes enfrentam um mapa que enlouquece ao redor deles.</p>
 </section>
 
 <!-- ─── 4. CRIATURAS ─── -->
 <section class="section" id="s4">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">04</span>
     <h1 class="section-title">Criaturas</h1>
   </div>
@@ -1304,14 +1212,14 @@
   </ul>
 
   <!-- HOOKBOUND -->
-  <div class="creature-card" id="hookbound">
-    <div class="creature-header">
-      <div class="creature-icon">🪝</div>
-      <div>
-        <div class="creature-name">The Hookbound</div>
+  <div class="creature-card" id="hookbound" bis_skin_checked="1">
+    <div class="creature-header" bis_skin_checked="1">
+      <div class="creature-icon" bis_skin_checked="1">🪝</div>
+      <div bis_skin_checked="1">
+        <div class="creature-name" bis_skin_checked="1">The Hookbound</div>
       </div>
     </div>
-    <div class="creature-body">
+    <div class="creature-body" bis_skin_checked="1">
       <h3>Conceito Visual</h3>
       <p>Entidade encapuzada e imponente, envolta em uma túnica de carne costurada e ensanguentada. O rosto é uma boca rasgada repleta de dentes afiados e olhos amarelos brilhantes no interior do capuz. Ambos os braços carregam correntes enferrujadas que terminam em ganchos curvos, gotejando sangue. Movimentos lentos, pesados e deliberados — cada passo faz as correntes chacoalharem com um som metálico inconfundível.</p>
 
@@ -1325,21 +1233,21 @@
       <h3>Ataque Básico</h3>
       <p>Balança as correntes com os ganchos como se fossem as Lâminas do Caos de Kratos — um arco amplo e violento que cobre uma grande área à sua frente e nas laterais. Som metálico do impacto inconfundível. Inflige 1 vida de dano em qualquer sobrevivente atingido pelo arco.</p>
 
-      <div class="power-card">
-        <div class="power-type">Ativo</div>
-        <div class="power-name">Armadilha de Sangue</div>
+      <div class="power-card" bis_skin_checked="1">
+        <div class="power-type" bis_skin_checked="1">Ativo</div>
+        <div class="power-name" bis_skin_checked="1">Armadilha de Sangue</div>
         <p class="power-desc">Risca um símbolo de gancho com o próprio sangue no chão. A armadilha fica invisível para os sobreviventes. Ao pisar, a vítima sofre 1 vida de dano, fica presa no lugar e grita — o Hookbound é alertado instantaneamente. Aliados devem vir libertá-la (vulnerabilidade coletiva intencional). Cooldown alto.</p>
       </div>
 
-      <div class="power-card">
-        <div class="power-type">Ativo</div>
-        <div class="power-name">Arrasto de Gancho</div>
+      <div class="power-card" bis_skin_checked="1">
+        <div class="power-type" bis_skin_checked="1">Ativo</div>
+        <div class="power-name" bis_skin_checked="1">Arrasto de Gancho</div>
         <p class="power-desc">Arremessa um gancho em linha reta na direção do alvo que está focando. Se acertar, puxa a vítima para perto dele violentamente. Causa dano se o alvo não estiver protegido. Alcance médio-longo. Cooldown moderado.</p>
       </div>
 
-      <div class="power-card">
-        <div class="power-type">Passiva</div>
-        <div class="power-name">Ecolocalização</div>
+      <div class="power-card" bis_skin_checked="1">
+        <div class="power-type" bis_skin_checked="1">Passiva</div>
+        <div class="power-name" bis_skin_checked="1">Ecolocalização</div>
         <p class="power-desc">Emite pulsos sônicos silenciosos e contínuos. Detecta e localiza sobreviventes através de paredes dentro de um raio definido — exceto se o sobrevivente estiver agachado em cobertura, dentro de um esconderijo ou completamente imóvel por alguns segundos.</p>
       </div>
 
@@ -1349,22 +1257,22 @@
       <h3>Counter (fraqueza)</h3>
       <p>Agachar e usar esconderijos neutraliza a Ecolocalização. Armadilhas de Sangue podem ser memorizadas por aliados que as viram ser colocadas.</p>
 
-      <div class="mori-card">
-        <div class="mori-label">Finalização — "O Gancho"</div>
+      <div class="mori-card" bis_skin_checked="1">
+        <div class="mori-label" bis_skin_checked="1">Finalização — "O Gancho"</div>
         <p>Lança um gancho no peitoral da vítima, a suspende no ar pela corrente por um instante — olhando diretamente para ela com os olhos amarelos brilhando — e então a deixa cair. Fecha os dedos em redor da vítima e a arrasta para o escuro. Câmera fecha no rosto da criatura no momento do impacto.</p>
       </div>
     </div>
   </div>
 
   <!-- WHISPERER -->
-  <div class="creature-card" id="whisperer">
-    <div class="creature-header">
-      <div class="creature-icon">👁</div>
-      <div>
-        <div class="creature-name">The Whisperer</div>
+  <div class="creature-card" id="whisperer" bis_skin_checked="1">
+    <div class="creature-header" bis_skin_checked="1">
+      <div class="creature-icon" bis_skin_checked="1">👁</div>
+      <div bis_skin_checked="1">
+        <div class="creature-name" bis_skin_checked="1">The Whisperer</div>
       </div>
     </div>
-    <div class="creature-body">
+    <div class="creature-body" bis_skin_checked="1">
       <h3>Conceito Visual</h3>
       <p>The Whisperer é uma entidade de sombra pura — seu corpo não tem substância física, apenas a silhueta escura e densa de um ser humano que parece absorver a luz ao redor. Veste uma capa longa e rasgada nas pontas, com lapelas que se curvam para cima como asas. No rosto: uma máscara branca vazia com um sorriso de dentes brancos e afiados, amplo demais para qualquer face humana, repleto de gengiva vermelha escura. Na cabeça, uma cartola preta de abas largas com um olho vermelho e vivo gravado na frente — o olho se move e pisca. Os olhos da criatura em si são vermelhos brilhantes com pupilas verticais negras.</p>
       <p>Personalidade: <em>menacingly courteous</em> — ele não ataca com fúria, ele brinca. Calculado, quase teatral. Assobia enquanto caça. Não tem pressa. E isso que o torna perturbador.</p>
@@ -1380,21 +1288,21 @@
       <h3>Ataque Básico</h3>
       <p>Aponta para o chão com o dedo. Uma mancha de sombra se expande no piso ao redor do alvo — e de dentro dela emergem <strong>estacas gigantes completamente negras</strong> que perfuram os sobreviventes de baixo para cima. O ataque é silencioso até o momento do impacto, dando pouquíssimo tempo de reação. Inflige 1 vida de dano.</p>
 
-      <div class="power-card">
-        <div class="power-type">Ativo</div>
-        <div class="power-name">Teletransporte Sombrio</div>
+      <div class="power-card" bis_skin_checked="1">
+        <div class="power-type" bis_skin_checked="1">Ativo</div>
+        <div class="power-name" bis_skin_checked="1">Teletransporte Sombrio</div>
         <p class="power-desc">Cria uma mancha de sombra no chão em um local a sua escolha. Após um breve delay, teletransporta instantaneamente para próximo do local escolhido — sem emitir nenhum som de alerta para os jogadores próximos. Permite reposicionamento silencioso e ataques surpresa totais. Cooldown moderado.</p>
       </div>
 
-      <div class="power-card">
-        <div class="power-type">Ativo</div>
-        <div class="power-name">Olhos nas Paredes</div>
+      <div class="power-card" bis_skin_checked="1">
+        <div class="power-type" bis_skin_checked="1">Ativo</div>
+        <div class="power-name" bis_skin_checked="1">Olhos nas Paredes</div>
         <p class="power-desc">Planta olhos nas paredes do mapa. 1 olho é funcional — se move lentamente pela superfície da parede, procurando sobreviventes e revelando sua posição. Os demais olhos plantados são ilusão — se movem mas não têm função. Os sobreviventes não sabem qual é o real. Cooldown alto.</p>
       </div>
 
-      <div class="phase-card">
-        <div class="power-type">⚠ Fase 2 — Desbloqueado na Sanidade Nível 2</div>
-        <div class="power-name">Exército de Sombras</div>
+      <div class="phase-card" bis_skin_checked="1">
+        <div class="power-type" bis_skin_checked="1">⚠ Fase 2 — Desbloqueado na Sanidade Nível 2</div>
+        <div class="power-name" bis_skin_checked="1">Exército de Sombras</div>
         <p class="power-desc">Invoca os clones da Sanidade antes do momento normal e em maior quantidade. Esses clones se movem exatamente como ele — mesma postura, mesmo passo, mesmo assovio. Somem após alguns segundos. A intenção é criar puro caos de informação: sobreviventes não conseguem distinguir o real do falso até que o real ataque.</p>
       </div>
 
@@ -1404,8 +1312,8 @@
       <h3>Counter (fraqueza)</h3>
       <p>O Teletransporte Sombrio deixa uma mancha residual visível por 1–2 segundos antes de ativar. Os Olhos nas Paredes emitem um brilho vermelho fraco — podem ser encontrados e destruídos. A luz intensa reduz o alcance das estacas.</p>
 
-      <div class="mori-card">
-        <div class="mori-label">Finalização — "O Sussurro Final"</div>
+      <div class="mori-card" bis_skin_checked="1">
+        <div class="mori-label" bis_skin_checked="1">Finalização — "O Sussurro Final"</div>
         <p>Teletransporta silenciosamente para trás da vítima. Pousa as mãos nos ombros com uma delicadeza perturbadora. A vítima para completamente — congelada. Ele se inclina até o nível do ouvido, e o jogador ouve um sussurro ininteligível de voz grave, suave e fantasmagórica. A vítima desmorona em silêncio como se todos os ossos se dissolvessem. The Whisperer se afasta lentamente, assoviando, enquanto o corpo desaparece sugado pelas sombras do chão.</p>
       </div>
     </div>
@@ -1414,7 +1322,7 @@
 
 <!-- ─── 5. CLASSES ─── -->
 <section class="section" id="s5">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">05</span>
     <h1 class="section-title">Classes de Sobreviventes</h1>
   </div>
@@ -1422,7 +1330,7 @@
   <p>Existem 5 classes jogáveis, cada uma com 2 poderes únicos. Sistema de vida padrão: 2 vidas — Ferido no 1º ataque, morto no 2º.</p>
 
   <table class="class-table">
-    <tr>
+    <tbody><tr>
       <th>Classe</th><th>Poder 1</th><th>Poder 2</th><th>Observações</th>
     </tr>
     <tr>
@@ -1455,7 +1363,7 @@
       <td>Análise de Poder: exibe na HUD os poderes ativos/CDs da criatura</td>
       <td>Informação é poder. Vital para estratégia do grupo</td>
     </tr>
-  </table>
+  </tbody></table>
 
   <h2>Notas de Design</h2>
   <ul>
@@ -1469,7 +1377,7 @@
 
 <!-- ─── 6. LOJA ─── -->
 <section class="section" id="s6">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">06</span>
     <h1 class="section-title">Loja de Itens</h1>
   </div>
@@ -1479,7 +1387,7 @@
 
   <h2>Itens Disponíveis (Alpha)</h2>
   <table class="class-table">
-    <tr><th>Item</th><th>Efeito</th><th>Qtd.</th><th>Custo</th></tr>
+    <tbody><tr><th>Item</th><th>Efeito</th><th>Qtd.</th><th>Custo</th></tr>
     <tr><td>Medkit</td><td>Cura 1 vida imediatamente ao usar. Pode ser usado em si mesmo ou em aliado adjacente.</td><td>1 uso</td><td>Moderado</td></tr>
     <tr><td>Armadilha</td><td>Coloca uma armadilha no chão. Quando a criatura passa, fica lenta por alguns segundos.</td><td>2 usos</td><td>Moderado</td></tr>
     <tr><td>Granada de Fumo</td><td>Cria uma nuvem de fumaça que bloqueia a linha de visão da criatura brevemente. Permite fuga.</td><td>1 uso</td><td>Baixo</td></tr>
@@ -1487,7 +1395,7 @@
     <tr><td>Lanterna</td><td>Revela The Whisperer invisível. Perturba criaturas sensíveis à luz. Duração limitada.</td><td>Duração</td><td>Moderado</td></tr>
     <tr><td>Flare de Emergência</td><td>Cria uma zona de luz intensa por 10 segundos. Útil contra The Whisperer.</td><td>1 uso</td><td>Baixo</td></tr>
     <tr><td>Kit de Armadilha Avançada</td><td>Versão aprimorada — prende a criatura no lugar por 3 segundos.</td><td>1 uso</td><td>Alto</td></tr>
-  </table>
+  </tbody></table>
 
   <h2>Regras da Loja</h2>
   <ul>
@@ -1501,21 +1409,21 @@
 
 <!-- ─── 7. LOBBY ─── -->
 <section class="section" id="s7">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">07</span>
     <h1 class="section-title">Lobby — O Hotel no Vazio</h1>
   </div>
 
   <h2>Estrutura de Places (Roblox)</h2>
-  <div class="place-grid">
-    <div class="place-card place-1">
-      <div class="place-label">Place 1</div>
-      <div class="place-name">O Hotel (Lobby)</div>
+  <div class="place-grid" bis_skin_checked="1">
+    <div class="place-card place-1" bis_skin_checked="1">
+      <div class="place-label" bis_skin_checked="1">Place 1</div>
+      <div class="place-name" bis_skin_checked="1">O Hotel (Lobby)</div>
       <p>Hub principal. Preparação pré-partida, seleção de classe, compra de itens e cosméticos, acesso ao bestiário e ao portal de entrada.</p>
     </div>
-    <div class="place-card place-2">
-      <div class="place-label">Place 2</div>
-      <div class="place-name">As Dimensões (Gameplay)</div>
+    <div class="place-card place-2" bis_skin_checked="1">
+      <div class="place-label" bis_skin_checked="1">Place 2</div>
+      <div class="place-name" bis_skin_checked="1">As Dimensões (Gameplay)</div>
       <p>Ambiente de partida. Contém todos os mapas rotativos. Jogadores são transportados aqui ao entrar no portal do Hotel.</p>
     </div>
   </div>
@@ -1530,25 +1438,25 @@
   </ul>
 
   <h2>UIs do Hotel — Alpha</h2>
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-badge badge-active">Ativo · Alpha</div>
-      <div class="card-title">Loadout</div>
+  <div class="card-grid" bis_skin_checked="1">
+    <div class="card" bis_skin_checked="1">
+      <div class="card-badge badge-active" bis_skin_checked="1">Ativo · Alpha</div>
+      <div class="card-title" bis_skin_checked="1">Loadout</div>
       <p>Shopping de itens consumíveis para sobreviventes. Jogadores compram e equipam itens (medkits, armadilhas, granadas, etc.) com a moeda do jogo antes de entrar no portal.</p>
     </div>
-    <div class="card">
-      <div class="card-badge badge-active">Ativo · Alpha</div>
-      <div class="card-title">Classes</div>
+    <div class="card" bis_skin_checked="1">
+      <div class="card-badge badge-active" bis_skin_checked="1">Ativo · Alpha</div>
+      <div class="card-title" bis_skin_checked="1">Classes</div>
       <p>Aba de seleção de classe. Jogador visualiza todas as classes disponíveis, seus poderes e as que já desbloqueou. Confirma a classe para a próxima partida.</p>
     </div>
-    <div class="card">
-      <div class="card-badge badge-locked">Bloqueado · Alpha</div>
-      <div class="card-title">Bestiário</div>
+    <div class="card" bis_skin_checked="1">
+      <div class="card-badge badge-locked" bis_skin_checked="1">Bloqueado · Alpha</div>
+      <div class="card-title" bis_skin_checked="1">Bestiário</div>
       <p>Enciclopédia de criaturas — exibe lore, habilidades, fraquezas e estatísticas das criaturas que o jogador já encontrou. Será preenchido progressivamente conforme o jogador joga.</p>
     </div>
-    <div class="card">
-      <div class="card-badge badge-active">Ativo · Alpha</div>
-      <div class="card-title">Shop</div>
+    <div class="card" bis_skin_checked="1">
+      <div class="card-badge badge-active" bis_skin_checked="1">Ativo · Alpha</div>
+      <div class="card-title" bis_skin_checked="1">Shop</div>
       <p>Loja de cosméticos, gamepasses e itens premium. Inclui skins de sobreviventes, efeitos visuais de poderes, emotes, trilhas de movimento e pacotes temáticos.</p>
     </div>
   </div>
@@ -1567,21 +1475,21 @@
 
 <!-- ─── 8. MAPAS ─── -->
 <section class="section" id="s8">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">08</span>
     <h1 class="section-title">Mapas</h1>
   </div>
 
   <p>Os mapas existem dentro da Place 2 (As Dimensões) e são rotacionados via votação a cada partida. Cada mapa é uma dimensão distinta criada pelo Midnight Host.</p>
 
-  <div class="creature-card">
-    <div class="creature-header" style="border-left-color: #2d5a27;">
-      <div class="creature-icon" style="background: radial-gradient(circle, #2d5a27 0%, transparent 70%); border-color: #2d5a27;">🌲</div>
-      <div>
-        <div class="creature-name" style="font-size:17px;">Floresta — "Árvores que Sussurram"</div>
+  <div class="creature-card" bis_skin_checked="1">
+    <div class="creature-header" style="border-left-color: #2d5a27;" bis_skin_checked="1">
+      <div class="creature-icon" style="background: radial-gradient(circle, #2d5a27 0%, transparent 70%); border-color: #2d5a27;" bis_skin_checked="1">🌲</div>
+      <div bis_skin_checked="1">
+        <div class="creature-name" style="font-size:17px;" bis_skin_checked="1">Floresta — "Árvores que Sussurram"</div>
       </div>
     </div>
-    <div class="creature-body">
+    <div class="creature-body" bis_skin_checked="1">
       <h3>Atmosfera</h3>
       <p>Floresta densa, noturna, com neblina rasteira e árvores retorcidas. Caminhos mal iluminados, galhos que estalam. A vegetação densa limita a linha de visão.</p>
       <h3>Pontos de Interesse</h3>
@@ -1596,14 +1504,14 @@
     </div>
   </div>
 
-  <div class="creature-card">
-    <div class="creature-header" style="border-left-color: #3a3a6a;">
-      <div class="creature-icon" style="background: radial-gradient(circle, #3a3a6a 0%, transparent 70%); border-color: #3a3a6a;">🏥</div>
-      <div>
-        <div class="creature-name" style="font-size:17px;">Hospital — "Ala dos Esquecidos"</div>
+  <div class="creature-card" bis_skin_checked="1">
+    <div class="creature-header" style="border-left-color: #3a3a6a;" bis_skin_checked="1">
+      <div class="creature-icon" style="background: radial-gradient(circle, #3a3a6a 0%, transparent 70%); border-color: #3a3a6a;" bis_skin_checked="1">🏥</div>
+      <div bis_skin_checked="1">
+        <div class="creature-name" style="font-size:17px;" bis_skin_checked="1">Hospital — "Ala dos Esquecidos"</div>
       </div>
     </div>
-    <div class="creature-body">
+    <div class="creature-body" bis_skin_checked="1">
       <h3>Atmosfera</h3>
       <p>Hospital abandonado, corredores estreitos com iluminação piscante, macas tombadas, sangue nas paredes. Sons de equipamentos médicos ao fundo. Extremamente claustrofóbico.</p>
       <h3>Pontos de Interesse</h3>
@@ -1621,7 +1529,7 @@
 
 <!-- ─── 9. ÁUDIO ─── -->
 <section class="section" id="s9">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">09</span>
     <h1 class="section-title">Áudio, SFX e Trilha Sonora</h1>
   </div>
@@ -1656,7 +1564,7 @@
 
 <!-- ─── 10. ANIMAÇÕES ─── -->
 <section class="section" id="s10">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">10</span>
     <h1 class="section-title">Animações</h1>
   </div>
@@ -1681,7 +1589,7 @@
 
 <!-- ─── 11. CÂMERA ─── -->
 <section class="section" id="s11">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">11</span>
     <h1 class="section-title">Sistema de Câmera</h1>
   </div>
@@ -1711,19 +1619,19 @@
 
 <!-- ─── 12. INTERFACE ─── -->
 <section class="section" id="s12">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">12</span>
     <h1 class="section-title">Interface — Menus e HUD</h1>
   </div>
 
   <h2>Tela Principal — Menu</h2>
   <table class="info-table">
-    <tr><td>Logo do Jogo</td><td>Centralizada no lado esquerdo da tela, em tamanho grande e imponente. Posicionada acima das opções de menu.</td></tr>
+    <tbody><tr><td>Logo do Jogo</td><td>Centralizada no lado esquerdo da tela, em tamanho grande e imponente. Posicionada acima das opções de menu.</td></tr>
     <tr><td>Opções de Menu</td><td>Quatro botões verticais abaixo da logo, no canto inferior esquerdo: <strong>Lobby, Settings, Tutorial, Credits</strong>.</td></tr>
     <tr><td>Logo da Comunidade</td><td>No canto inferior esquerdo, abaixo das opções de menu. Clicável, redireciona para o grupo/comunidade Roblox.</td></tr>
     <tr><td>Background Animado</td><td>Ocupa toda a metade ou dois terços direitos da tela. Exibe um clipe animado de um dos mapas do jogo com movimento de câmera lento, neblina animada e iluminação dinâmica.</td></tr>
     <tr><td>Efeito de Overlay</td><td>Vinheta escura sutil nas bordas do background para direcionar o olhar ao lado esquerdo. Grain de filme leve opcional para reforçar estética horror.</td></tr>
-  </table>
+  </tbody></table>
 
   <h2>HUD — Durante a Partida</h2>
   <ul>
@@ -1745,7 +1653,7 @@
 
 <!-- ─── 13. PROGRESSÃO ─── -->
 <section class="section" id="s13">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">13</span>
     <h1 class="section-title">Progressão e Monetização</h1>
   </div>
@@ -1770,13 +1678,13 @@
 
 <!-- ─── 14. ROADMAP ─── -->
 <section class="section" id="s14">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">14</span>
     <h1 class="section-title">Roadmap</h1>
   </div>
 
   <table class="roadmap-table">
-    <tr><th>Fase</th><th>Status</th><th>Conteúdo</th></tr>
+    <tbody><tr><th>Fase</th><th>Status</th><th>Conteúdo</th></tr>
     <tr>
       <td class="phase-alpha">Alpha</td>
       <td>Em desenvolvimento</td>
@@ -1797,12 +1705,12 @@
       <td>Futuro</td>
       <td>Temporadas temáticas, criaturas sazonais, eventos especiais</td>
     </tr>
-  </table>
+  </tbody></table>
 </section>
 
 <!-- ─── 15. QUESTÕES ABERTAS ─── -->
 <section class="section" id="s15">
-  <div class="section-header">
+  <div class="section-header" bis_skin_checked="1">
     <span class="section-num">15</span>
     <h1 class="section-title">Questões Abertas / A Decidir</h1>
   </div>
@@ -1823,8 +1731,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-title">Midnight Trials</div>
-  <div class="footer-sub">GDD Alpha v1.0 &nbsp;·&nbsp; Horror · Survival · Roblox &nbsp;·&nbsp; PT-BR</div>
+  <div class="footer-title" bis_skin_checked="1">Midnight Trials</div>
+  <div class="footer-sub" bis_skin_checked="1">GDD Alpha v1.0 &nbsp;·&nbsp; Horror · Survival · Roblox &nbsp;·&nbsp; PT-BR</div>
 </footer>
 
 </main>
