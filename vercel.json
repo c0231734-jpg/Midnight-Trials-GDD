@@ -1,8 +1,3 @@
 {
-  "version": 2,
-  "functions": {
-    "api/save-html.js": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  "version": 2
 }
